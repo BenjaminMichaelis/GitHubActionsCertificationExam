@@ -41,6 +41,8 @@
 - Actions
   - The actions inside your workflow are the standalone commands that are executed. These standalone commands can reference GitHub actions such as using your own custom actions, or community actions like the one we use above, actions/checkout@v2. You can also run commands such as `run: npm install -g bats` to execute a command on the runner.
 
+Order of yaml file keywords (ex: on, push, jobs, runs-on, steps, uses, run)
+
 ## Referencing and running actions
 
 ### How to reference an action
@@ -80,9 +82,11 @@ jobs:
           First_Name: Mona
 ```
 
-### Passing artifact data between jobs
+Glancing over these default environment variables to just know generally what exists and the naming convention that GitHub uses is helpful: <https://docs.github.com/en/actions/learn-github-actions/environment-variables#default-environment-variables>
 
-Using "upload-artifact" and "download-artifact" works well.
+### Passing data between jobs
+
+Using "upload-artifact" and "download-artifact" works well, or else using `::set-output ::`.
 
 ```yml
 name: Share data between jobs
@@ -121,6 +125,8 @@ Workflows can be configured to run:
 - Manually
   - You can manually trigger a workflow by using the workflow_dispatch command.
 
+Glancing over these event triggers to just know generally what exists and the naming convention that GitHub uses is helpful: <https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows>
+
 ## Creating Actions
 
 Metadata and syntax needed to create an action in a action.yml file:
@@ -151,9 +157,16 @@ Learning Module: <https://docs.microsoft.com/learn/modules/manage-github-actions
   - The most common customization to the self-hosted runners is:
     - Labels
       - Has 3 default labels:
-        - Default label:
-          - self-hosted: Default label applied to all self-hosted runners
-          - linux, windows, or macOS: Applied depending on the runner's operating system.
-          - x64 , ARM, or ARM64: Applied depending on the runner's hardware architecture.
+        - self-hosted: Default label applied to all self-hosted runners
+        - linux, windows, or macOS: Applied depending on the runner's operating system.
+        - x64 , ARM, or ARM64: Applied depending on the runner's hardware architecture.
     - Proxy servers
     - IP allowlists
+
+- Logs for troubleshooting runners can be found by:
+  - Reviewing the activities and automatic updates of the runner in the `Runner_` files in the `_diag` folder.
+  - Reviewing the status of the jobs the runner executed in the `Worker_` files in the `_diag` folder.
+
+### Secret Management
+
+Secret management, specifically for enterprises, is important to know the scoping, that secrets go from Organization level, repository level, to environment level in decreasing levels.
