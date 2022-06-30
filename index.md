@@ -10,7 +10,12 @@
 
 ### Great resources
 
-- This learn collection should teach about 90% of everything that is needed: <https://docs.microsoft.com/users/githubtraining/collections/n5p4a5z7keznp5>
+- Walking through this learn collection should teach about 90% of everything that is needed: <https://docs.microsoft.com/users/githubtraining/collections/n5p4a5z7keznp5>
+  - If last minute, I would focus mostly on the modules of:
+    - Automate development tasks by using GitHub Actions
+    - Build continuous integration (CI) workflows by using GitHub Actions
+    - Create and publish custom GitHub actions
+    - Manage GitHub Actions in the enterprise
 
 ### Two types of actions
 
